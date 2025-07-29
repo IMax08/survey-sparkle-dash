@@ -96,14 +96,14 @@ const Dashboard = () => {
           </section>
 
           {/* Map and Agenda section side by side */}
-          <section className="grid grid-cols-1 xl:grid-cols-4 gap-4 sm:gap-6 animate-fade-in" style={{ animationDelay: '200ms' }}>
+          <section className="grid grid-cols-1 xl:grid-cols-4 gap-4 sm:gap-6 animate-fade-in items-start" style={{ animationDelay: '200ms' }}>
             {/* Map - Takes 3 columns (75% width) */}
-            <div className="xl:col-span-3">
+            <div className="xl:col-span-3 h-full">
               <InteractiveMap />
             </div>
 
             {/* Right Sidebar with Agenda - Takes 1 column (25% width) */}
-            <div className="space-y-4">
+            <div className="space-y-4 h-full flex flex-col">
               <AgendaWidget />
             </div>
           </section>
