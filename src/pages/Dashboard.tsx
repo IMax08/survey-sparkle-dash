@@ -5,6 +5,7 @@ import DashboardNavbar from "@/components/dashboard/DashboardNavbar";
 import MetricCard from "@/components/dashboard/MetricCard";
 import InteractiveMap from "@/components/dashboard/InteractiveMap";
 import ChatBot from "@/components/dashboard/ChatBot";
+import AgendaWidget from "@/components/dashboard/AgendaWidget";
 import { Card } from "@/components/ui/card";
 
 const Dashboard = () => {
@@ -21,7 +22,7 @@ const Dashboard = () => {
       icon: FileText,
       iconColor: "text-white",
       bgColor: "bg-metric-green",
-      strongIconColor: "#00192a", // Azul escuro forte
+      strongIconColor: "#22c55e", // Verde forte
       ctaText: "Ver +"
     },
     {
@@ -37,7 +38,7 @@ const Dashboard = () => {
     {
       title: "Notas em Aberto",
       value: 35,
-      change: { value: 0.17, type: 'decrease' as const, period: 'Mês passado' },
+      change: { value: 0.12, type: 'decrease' as const, period: 'Mês passado' },
       icon: FileText,
       iconColor: "text-white", 
       bgColor: "bg-metric-yellow",
@@ -47,7 +48,7 @@ const Dashboard = () => {
     {
       title: "Inspeções Executadas",
       value: 75,
-      change: { value: 0.26, type: 'decrease' as const, period: 'Mês passado' },
+      change: { value: 0.24, type: 'decrease' as const, period: 'Mês passado' },
       icon: FileText,
       iconColor: "text-white",
       bgColor: "bg-metric-red", 
@@ -75,29 +76,39 @@ const Dashboard = () => {
         }}
       >
         <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
-          {/* Metrics Cards - Responsive grid */}
-          <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {metricsData.map((metric, index) => (
-              <div key={metric.title} className="animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
-                <MetricCard
-                  title={metric.title}
-                  value={metric.value}
-                  change={metric.change}
-                  icon={metric.icon}
-                  iconColor={metric.iconColor}
-                  bgColor={metric.bgColor}
-                  strongIconColor={metric.strongIconColor}
-                  ctaText={metric.ctaText}
-                  onCtaClick={() => console.log(`Navigate to ${metric.title}`)}
-                />
-              </div>
-            ))}
-          </section>
+          <div className="flex gap-6">
+            {/* Main Content Area */}
+            <div className="flex-1 space-y-6">
+              {/* Metrics Cards - Responsive grid */}
+              <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                {metricsData.map((metric, index) => (
+                  <div key={metric.title} className="animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
+                    <MetricCard
+                      title={metric.title}
+                      value={metric.value}
+                      change={metric.change}
+                      icon={metric.icon}
+                      iconColor={metric.iconColor}
+                      bgColor={metric.bgColor}
+                      strongIconColor={metric.strongIconColor}
+                      ctaText={metric.ctaText}
+                      onCtaClick={() => console.log(`Navigate to ${metric.title}`)}
+                    />
+                  </div>
+                ))}
+              </section>
 
-          {/* Main Map Section - Taking full width like in image */}
-          <section className="animate-fade-in" style={{ animationDelay: '200ms' }}>
-            <InteractiveMap />
-          </section>
+              {/* Main Map Section */}
+              <section className="animate-fade-in" style={{ animationDelay: '200ms' }}>
+                <InteractiveMap />
+              </section>
+            </div>
+
+            {/* Right Sidebar with Agenda */}
+            <div className="w-80 flex-shrink-0">
+              <AgendaWidget />
+            </div>
+          </div>
         </div>
       </main>
 
