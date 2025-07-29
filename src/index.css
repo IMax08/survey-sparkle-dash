@@ -28,7 +28,7 @@
     --info: 219 89% 56%;              /* Survey Blue */
     
     /* Metric Card Colors - Cores exatas especificadas */
-    --metric-green: 200 100% 8%;      /* #00192a - Azul escuro para Relatórios Gerados */
+    --metric-green: 195 100% 93%;     /* #DEF7FF - Azul claro para Relatórios Gerados */
     --metric-orange: 42 94% 75%;      /* #fbd280 - Amarelo claro para Inspeções em Aberto */
     --metric-yellow: 42 94% 75%;      /* #fbd280 - Amarelo claro para Notas em Aberto */
     --metric-red: 0 100% 93%;         /* #ffdcdc - Rosa claro para Inspeções Executadas */
