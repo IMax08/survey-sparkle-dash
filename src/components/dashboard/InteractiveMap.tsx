@@ -102,15 +102,15 @@ const InteractiveMap = () => {
         <h4 className="font-semibold text-gray-800 mb-3 text-sm">Status Inspeções</h4>
           <div className="space-y-2">
             <div className="flex items-center space-x-2">
-              <div className="w-4 h-4 rounded-full" style={{ backgroundColor: '#FFE8AC' }}></div>
+              <div className="w-4 h-4 rounded-full" style={{ backgroundColor: '#F5D9A1' }}></div>
               <span className="text-xs text-gray-600">Em Aberto</span>
             </div>
             <div className="flex items-center space-x-2">
-              <div className="w-4 h-4 rounded-full" style={{ backgroundColor: '#B8E2C8' }}></div>
+              <div className="w-4 h-4 rounded-full" style={{ backgroundColor: '#DBFFDC' }}></div>
               <span className="text-xs text-gray-600">Executadas</span>
             </div>
             <div className="flex items-center space-x-2">
-              <div className="w-4 h-4 rounded-full" style={{ backgroundColor: '#F4C7C7' }}></div>
+              <div className="w-4 h-4 rounded-full" style={{ backgroundColor: '#FFDCDD' }}></div>
               <span className="text-xs text-gray-600">Atrasadas</span>
             </div>
           </div>
