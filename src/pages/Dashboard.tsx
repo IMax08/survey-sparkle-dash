@@ -17,7 +17,7 @@ const Dashboard = () => {
     {
       title: "Relatórios Gerados",
       value: 125,
-      change: { value: 21.2, type: 'increase' as const, period: 'Mês passado' },
+      change: { value: 2.12, type: 'increase' as const, period: 'Mês passado' },
       icon: FileText,
       iconColor: "text-white",
       bgColor: "bg-metric-green",
@@ -26,7 +26,7 @@ const Dashboard = () => {
     {
       title: "Inspeções em Aberto", 
       value: 25,
-      change: { value: 0.10, type: 'decrease' as const, period: 'Mês passado' },
+      change: { value: 0.19, type: 'decrease' as const, period: 'Mês passado' },
       icon: FileText,
       iconColor: "text-white",
       bgColor: "bg-metric-orange",
@@ -35,7 +35,7 @@ const Dashboard = () => {
     {
       title: "Notas em Aberto",
       value: 35,
-      change: { value: 0.12, type: 'decrease' as const, period: 'Mês passado' },
+      change: { value: 0.17, type: 'decrease' as const, period: 'Mês passado' },
       icon: FileText,
       iconColor: "text-white", 
       bgColor: "bg-metric-yellow",
@@ -44,8 +44,8 @@ const Dashboard = () => {
     {
       title: "Inspeções Executadas",
       value: 75,
-      change: { value: 0.25, type: 'decrease' as const, period: 'Mês passado' },
-      icon: CheckCircle,
+      change: { value: 0.26, type: 'decrease' as const, period: 'Mês passado' },
+      icon: FileText,
       iconColor: "text-white",
       bgColor: "bg-metric-red", 
       ctaText: "Ver +"

@@ -25,12 +25,12 @@ const InteractiveMap = () => {
 
   console.log('[Dashboard] InteractiveMap rendered', { selectedPin });
 
-  // Mock map pins data - matching the images exactly
+  // Mock map pins data - Rio de Janeiro locations
   const mapPins: MapPin[] = [
     {
       id: '1',
-      lat: -23.5505,
-      lng: -46.6333,
+      lat: -22.9068,
+      lng: -43.1729,
       title: 'Brava',
       type: 'inspection',
       status: 'pending',
@@ -39,11 +39,11 @@ const InteractiveMap = () => {
       time: '09:00',
       address: 'Planajado 04/01/2025 - Aceito: Nome Usuário'
     },
-    // More pins distributed across the map
+    // More pins distributed across Rio de Janeiro
     ...Array.from({ length: 20 }, (_, i) => ({
       id: `pin-${i + 2}`,
-      lat: -23.5505 + (Math.random() - 0.5) * 0.1,
-      lng: -46.6333 + (Math.random() - 0.5) * 0.1,
+      lat: -22.9068 + (Math.random() - 0.5) * 0.1,
+      lng: -43.1729 + (Math.random() - 0.5) * 0.1,
       title: `Local ${i + 2}`,
       type: 'inspection' as const,
       status: ['pending', 'completed', 'cancelled'][Math.floor(Math.random() * 3)] as 'pending' | 'completed' | 'cancelled',

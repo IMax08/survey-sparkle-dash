@@ -30,7 +30,7 @@ const GoogleMapComponent: React.FC<GoogleMapProps> = ({ pins, onPinClick, classN
   useEffect(() => {
     if (ref.current && !map) {
       const newMap = new google.maps.Map(ref.current, {
-        center: { lat: -23.5505, lng: -46.6333 }, // São Paulo, SP
+        center: { lat: -22.9068, lng: -43.1729 }, // Rio de Janeiro, RJ
         zoom: 11,
         mapTypeId: 'roadmap',
         styles: [
