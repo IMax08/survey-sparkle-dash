@@ -282,7 +282,7 @@ const InteractiveMap = () => {
       {/* Sidebar - Takes 1 column (25% width) - Exactly as in image */}
       <div className="space-y-4">
         {/* Calendar Widget - Exactly as in image */}
-        <Card className="p-4 bg-white border border-gray-200 rounded-2xl">
+        <Card className="p-4 bg-white border border-gray-200 rounded-xl">
           <div className="flex items-center justify-between mb-4">
             <h4 className="font-semibold text-gray-800 text-sm">Agenda</h4>
             <Button variant="ghost" size="sm" className="text-xs text-white bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded">
@@ -290,35 +290,100 @@ const InteractiveMap = () => {
             </Button>
           </div>
           
-          <div className="text-center mb-3">
-            <span className="text-sm font-medium text-gray-800">Outubro</span>
+          {/* Month header with dark background */}
+          <div className="bg-gray-800 text-white text-center py-2 mb-3 rounded">
+            <span className="text-sm font-medium">Outubro</span>
           </div>
           
+          {/* Day headers */}
           <div className="grid grid-cols-7 gap-1 mb-2">
-            {['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'].map(day => (
-              <div key={day} className="text-center text-xs text-gray-500 py-1">
+            {['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'].map((day, index) => (
+              <div key={day} className={`text-center text-xs py-1 ${index >= 5 ? 'text-blue-500' : 'text-gray-600'}`}>
                 {day}
               </div>
             ))}
           </div>
           
+          {/* Calendar grid */}
           <div className="grid grid-cols-7 gap-1">
-            {[28, 29, 30, 31, 1, 2, 3].map((day, index) => (
+            {/* Previous month days */}
+            {[30, 1, 2, 3, 4, 5, 6].map((day, index) => (
               <div 
                 key={index}
                 className={`
-                  text-center text-xs p-2 cursor-pointer rounded
-                  ${day <= 3 && index >= 4 ? 'text-gray-800 hover:bg-gray-100' : 'text-gray-400'}
-                  ${day === 31 ? 'bg-gray-800 text-white' : ''}
+                  text-center text-xs p-2 cursor-pointer rounded h-8 flex items-center justify-center
+                  ${index === 0 ? 'text-gray-400' : 'text-gray-800 hover:bg-gray-100'}
+                  ${index >= 5 ? 'text-blue-500' : ''}
                 `}
               >
                 {day}
               </div>
             ))}
-            {[4, 5, 6, 7, 8, 9, 10].map((day, index) => (
+            
+            {/* Current month days */}
+            {[7, 8, 9, 10, 11, 12, 13].map((day, index) => (
               <div 
                 key={index + 7}
-                className="text-center text-xs p-2 cursor-pointer rounded text-gray-800 hover:bg-gray-100"
+                className={`
+                  text-center text-xs p-2 cursor-pointer rounded h-8 flex items-center justify-center
+                  text-gray-800 hover:bg-gray-100
+                  ${index >= 5 ? 'text-blue-500' : ''}
+                `}
+              >
+                {day}
+              </div>
+            ))}
+            
+            {[14, 15, 16, 17, 18, 19, 20].map((day, index) => (
+              <div 
+                key={index + 14}
+                className={`
+                  text-center text-xs p-2 cursor-pointer rounded h-8 flex items-center justify-center
+                  text-gray-800 hover:bg-gray-100
+                  ${index >= 5 ? 'text-blue-500' : ''}
+                `}
+              >
+                {day}
+              </div>
+            ))}
+            
+            {[21, 22, 23, 24, 25, 26, 27].map((day, index) => (
+              <div 
+                key={index + 21}
+                className={`
+                  text-center text-xs p-2 cursor-pointer rounded h-8 flex items-center justify-center
+                  text-gray-800 hover:bg-gray-100
+                  ${index >= 5 ? 'text-blue-500' : ''}
+                `}
+              >
+                {day}
+              </div>
+            ))}
+            
+            {/* Week with day 28 selected */}
+            {[28, 29, 30, 31, 1, 2, 3].map((day, index) => (
+              <div 
+                key={index + 28}
+                className={`
+                  text-center text-xs p-2 cursor-pointer rounded h-8 flex items-center justify-center
+                  ${day === 28 ? 'bg-gray-800 text-white' : 
+                    day > 31 ? 'text-gray-400' : 'text-gray-800 hover:bg-gray-100'}
+                  ${index >= 5 && day <= 31 ? 'text-blue-500' : ''}
+                `}
+              >
+                {day}
+              </div>
+            ))}
+            
+            {/* Next month beginning */}
+            {[4, 5, 6, 7, 8, 9, 10].map((day, index) => (
+              <div 
+                key={index + 35}
+                className={`
+                  text-center text-xs p-2 cursor-pointer rounded h-8 flex items-center justify-center
+                  text-gray-800 hover:bg-gray-100
+                  ${index >= 5 ? 'text-blue-500' : ''}
+                `}
               >
                 {day}
               </div>

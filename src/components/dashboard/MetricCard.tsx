@@ -29,65 +29,70 @@ const MetricCard = ({
 }: MetricCardProps) => {
   console.log('[Dashboard] MetricCard rendered', { title, value });
 
-  const changeColor = change?.type === 'increase' ? 'text-status-success' : 'text-status-danger';
-  const ChangeIcon = change?.type === 'increase' ? ArrowUpRight : ArrowDownRight;
+  const getArrowIcon = () => {
+    if (change?.type === 'increase') return "↗";
+    if (change?.type === 'decrease') return "↘";
+    return "↔";
+  };
 
   return (
-    <Card className={`p-6 ${bgColor} text-white hover:opacity-90 transition-all duration-200 
-                     border-0 group cursor-pointer animate-fade-in relative overflow-hidden rounded-2xl`}>
-      <div className="flex items-start justify-between">
-        <div className="flex-1">
-          {/* Header with icon */}
-          <div className="flex items-start justify-between mb-4">
-            <div className={`w-8 h-8 ${bgColor} bg-white/20 rounded-lg flex items-center justify-center`}>
-              <Icon className={`w-5 h-5 ${iconColor}`} />
-            </div>
+    <Card className="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-200">
+      {/* Header with colored background and icon */}
+      <div className={`${bgColor} p-4 flex items-center justify-between`}>
+        <div className="flex items-center space-x-3">
+          <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+            <Icon className="w-5 h-5 text-white" />
           </div>
-
-          {/* Title */}
-          <h3 className="text-sm font-medium text-white/90 mb-3 leading-tight">
+          <h3 className="text-sm font-medium text-white">
             {title}
           </h3>
-
-          {/* Value and Change */}
-          <div className="flex items-end justify-between mb-4">
-            <p className="text-5xl font-bold text-white leading-none">
-              {value}
-            </p>
-            {change && (
-              <div className="flex items-center space-x-1 text-white/90 mb-2">
-                <TrendingUp className="w-4 h-4" />
-                <span className="text-sm font-medium">
-                  {change.type === 'increase' ? '+' : ''}{change.value}%
-                </span>
-              </div>
-            )}
-          </div>
-
-          {/* Change description with circular icon */}
-          {change && (
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
-                <TrendingUp className={`w-3 h-3 ${change.type === 'increase' ? 'text-green-300' : 'text-red-300'}`} />
-              </div>
-              <p className="text-xs text-white/80">
-                {change.type === 'increase' ? '+' : ''}{change.value}% - {change.period}
-              </p>
-            </div>
-          )}
         </div>
       </div>
 
-      {/* CTA Button */}
-      <div className="flex justify-end">
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={onCtaClick}
-          className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200"
-        >
-          {ctaText}
-        </Button>
+      {/* Content section */}
+      <div className="p-4 bg-white">
+        {/* Value and Arrow */}
+        <div className="flex items-baseline justify-between mb-3">
+          <span className="text-4xl font-bold text-gray-800">
+            {value}
+          </span>
+          <div className="text-right">
+            <span className="text-2xl font-bold" style={{ 
+              color: change?.type === 'increase' ? '#22C55E' : 
+                     change?.type === 'decrease' ? '#EF4444' : '#F59E0B' 
+            }}>
+              {getArrowIcon()}
+            </span>
+          </div>
+        </div>
+
+        {/* Change info */}
+        {change && (
+          <div className="flex items-center space-x-2 mb-4">
+            <div className="w-5 h-5 rounded-full flex items-center justify-center" style={{
+              backgroundColor: change.type === 'increase' ? '#22C55E' : '#EF4444'
+            }}>
+              <span className="text-white text-xs">
+                {change.type === 'increase' ? '↑' : '↓'}
+              </span>
+            </div>
+            <span className="text-sm text-gray-600">
+              {change.type === 'increase' ? '+' : ''}{change.value}% - {change.period}
+            </span>
+          </div>
+        )}
+
+        {/* CTA Button */}
+        <div className="flex justify-end">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={onCtaClick}
+            className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg text-xs font-medium"
+          >
+            {ctaText}
+          </Button>
+        </div>
       </div>
     </Card>
   );
