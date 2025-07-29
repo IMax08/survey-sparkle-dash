@@ -106,11 +106,11 @@ const InteractiveMap = () => {
               <span className="text-xs text-gray-600">Em Aberto</span>
             </div>
             <div className="flex items-center space-x-2">
-              <div className="w-4 h-4 rounded-full" style={{ backgroundColor: '#00192a' }}></div>
+              <div className="w-4 h-4 rounded-full" style={{ backgroundColor: '#22c55e' }}></div>
               <span className="text-xs text-gray-600">Executadas</span>
             </div>
             <div className="flex items-center space-x-2">
-              <div className="w-4 h-4 rounded-full" style={{ backgroundColor: '#ffdcdc' }}></div>
+              <div className="w-4 h-4 rounded-full" style={{ backgroundColor: '#ef4444' }}></div>
               <span className="text-xs text-gray-600">Atrasadas</span>
             </div>
           </div>

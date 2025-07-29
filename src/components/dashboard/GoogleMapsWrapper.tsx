@@ -52,7 +52,7 @@ const GoogleMapComponent: React.FC<GoogleMapProps> = ({ pins, onPinClick, classN
 
       pins.forEach((pin) => {
         const pinColor = pin.status === 'pending' ? '#fbd280' : 
-                         pin.status === 'completed' ? '#00192a' : '#ffdcdc';
+                         pin.status === 'completed' ? '#22c55e' : '#ef4444';
 
         const marker = new google.maps.Marker({
           position: { lat: pin.lat, lng: pin.lng },
