@@ -51,8 +51,8 @@ const GoogleMapComponent: React.FC<GoogleMapProps> = ({ pins, onPinClick, classN
       const markers: google.maps.Marker[] = [];
 
       pins.forEach((pin) => {
-        const pinColor = pin.status === 'pending' ? '#F5D9A1' : 
-                         pin.status === 'completed' ? '#DBFFDC' : '#FFDCDD';
+        const pinColor = pin.status === 'pending' ? '#F1B83D' : 
+                         pin.status === 'completed' ? '#4CAF50' : '#D32F2F';
 
         const marker = new google.maps.Marker({
           position: { lat: pin.lat, lng: pin.lng },

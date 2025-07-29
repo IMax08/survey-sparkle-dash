@@ -12,7 +12,7 @@
     --primary-foreground: 0 0% 100%;  /* White */
     
     /* Background System */
-    --background: 222 247 255;        /* #DEF7FF - Frame azul claro do dashboard */
+    --background: 0 0% 100%;          /* Fundo branco como no wireframe */
     --background-secondary: 220 15% 94%; /* Secondary Background */
     --foreground: 220 26% 14%;        /* Dark Text #1E293B */
     
@@ -27,11 +27,11 @@
     --danger: 0 84% 60%;              /* Red #EF4444 */
     --info: 219 89% 56%;              /* Survey Blue */
     
-    /* Metric Card Colors - Cores exatas do wireframe */
-    --metric-green: 219 255 220;     /* #DBFFDC - Verde claro */
-    --metric-orange: 245 217 161;    /* #F5D9A1 - Amarelo/dourado claro */
-    --metric-yellow: 245 217 161;    /* #F5D9A1 - Amarelo/dourado claro */
-    --metric-red: 255 220 221;       /* #FFDCDD - Rosa claro */
+    /* Metric Card Colors - Baseado no wireframe visual */
+    --metric-green: 125 65% 50%;      /* Verde do card "Relatórios Gerados" */
+    --metric-orange: 35 85% 60%;      /* Laranja do card "Inspeções em Aberto" */
+    --metric-yellow: 45 90% 65%;      /* Amarelo do card "Notas em Aberto" */
+    --metric-red: 355 70% 45%;        /* Vermelho escuro do card "Inspeções Executadas" */
     
     /* Neutral Grays */
     --muted: 220 14% 96%;             /* Light Muted */
