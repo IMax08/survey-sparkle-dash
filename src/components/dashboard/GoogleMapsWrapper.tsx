@@ -123,6 +123,7 @@ interface GoogleMapsWrapperProps {
 const GoogleMapsWrapper: React.FC<GoogleMapsWrapperProps> = ({ pins, onPinClick, className }) => {
   const [apiKey, setApiKey] = useState<string>('');
   const [hasValidKey, setHasValidKey] = useState(false);
+  const [initializedKey, setInitializedKey] = useState<string>('');
 
   useEffect(() => {
     // Check localStorage for saved API key
@@ -130,8 +131,14 @@ const GoogleMapsWrapper: React.FC<GoogleMapsWrapperProps> = ({ pins, onPinClick,
     if (savedKey) {
       setApiKey(savedKey);
       setHasValidKey(true);
+      // If we already initialized with a different key, reload the page
+      if (initializedKey && initializedKey !== savedKey) {
+        window.location.reload();
+        return;
+      }
+      setInitializedKey(savedKey);
     }
-  }, []);
+  }, [initializedKey]);
 
   const handleSaveApiKey = () => {
     if (apiKey.trim()) {
@@ -148,6 +155,8 @@ const GoogleMapsWrapper: React.FC<GoogleMapsWrapperProps> = ({ pins, onPinClick,
     setApiKey('');
     setHasValidKey(false);
     toast.info('API Key removida');
+    // Reload page to clear the Google Maps loader
+    setTimeout(() => window.location.reload(), 1000);
   };
 
   if (!hasValidKey) {
