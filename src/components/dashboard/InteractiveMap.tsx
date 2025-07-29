@@ -94,7 +94,7 @@ const InteractiveMap = () => {
       <GoogleMapsWrapper 
         pins={mapPins}
         onPinClick={setSelectedPin}
-        className="w-full h-full min-h-[500px] rounded-lg"
+        className="w-full h-full min-h-[600px] rounded-lg"
       />
       
       {/* Status Legend - overlay on Google Maps */}
@@ -204,7 +204,7 @@ const InteractiveMap = () => {
             </div>
           </div>
 
-          <div className="h-64 sm:h-80 lg:h-96">
+          <div className="h-[500px] sm:h-[600px] lg:h-[650px] w-full">
             <MapComponent />
           </div>
         </Card>
