@@ -172,19 +172,19 @@ const InteractiveMap = () => {
   );
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 sm:gap-6">
       {/* Map - Takes 3 columns (75% width) - Exactly as in image */}
-      <div className="lg:col-span-3">
-        <Card className="p-6 bg-white border border-gray-200 rounded-2xl">
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="text-lg font-semibold text-gray-800">Mapa</h3>
+      <div className="xl:col-span-3">
+        <Card className="p-4 sm:p-6 bg-white border border-gray-200 rounded-xl sm:rounded-2xl">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 space-y-3 sm:space-y-0">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-800">Mapa</h3>
             
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 w-full sm:w-auto">
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button variant="outline" size="sm" className="flex items-center space-x-2 text-gray-600 border-gray-300">
+                  <Button variant="outline" size="sm" className="flex items-center space-x-2 text-gray-600 border-gray-300 flex-1 sm:flex-initial justify-center">
                     <Filter className="w-4 h-4" />
-                    <span>Filtros</span>
+                    <span className="hidden sm:inline">Filtros</span>
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="max-w-md">
@@ -254,9 +254,9 @@ const InteractiveMap = () => {
 
               <Dialog open={isFullscreen} onOpenChange={setIsFullscreen}>
                 <DialogTrigger asChild>
-                  <Button variant="outline" size="sm" className="flex items-center space-x-2">
+                  <Button variant="outline" size="sm" className="flex items-center space-x-2 flex-1 sm:flex-initial justify-center">
                     <Maximize2 className="w-4 h-4" />
-                    <span>Expandir</span>
+                    <span className="hidden sm:inline">Expandir</span>
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="max-w-7xl w-full h-[90vh] p-0">
@@ -273,7 +273,7 @@ const InteractiveMap = () => {
             </div>
           </div>
 
-          <div className="h-96">
+          <div className="h-64 sm:h-80 lg:h-96">
             <MapComponent />
           </div>
         </Card>

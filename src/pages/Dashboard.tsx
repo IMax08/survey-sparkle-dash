@@ -63,19 +63,18 @@ const Dashboard = () => {
       {/* Main Content */}
       <main 
         className={`
-          transition-all duration-300 ease-in-out pt-navbar
-          ${sidebarCollapsed ? 'ml-16' : 'ml-sidebar'}
+          transition-all duration-300 ease-in-out pt-16 sm:pt-18 lg:pt-20
+          ml-0 sm:ml-16 lg:ml-sidebar
         `}
         style={{ 
-          marginLeft: sidebarCollapsed ? '64px' : '272px',
           paddingTop: '72px'
         }}
       >
-        <div className="p-6 space-y-6">
-          {/* Metrics Cards - Exactly 4 cards in a row */}
-          <section className="grid grid-cols-4 gap-6">
+        <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
+          {/* Metrics Cards - Responsive grid */}
+          <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {metricsData.map((metric, index) => (
-              <div key={metric.title} style={{ animationDelay: `${index * 100}ms` }}>
+              <div key={metric.title} className="animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
                 <MetricCard
                   title={metric.title}
                   value={metric.value}
