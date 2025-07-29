@@ -76,39 +76,37 @@ const Dashboard = () => {
         }}
       >
         <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
-          <div className="flex gap-6">
-            {/* Main Content Area */}
-            <div className="flex-1 space-y-6">
-              {/* Metrics Cards - Responsive grid */}
-              <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                {metricsData.map((metric, index) => (
-                  <div key={metric.title} className="animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
-                    <MetricCard
-                      title={metric.title}
-                      value={metric.value}
-                      change={metric.change}
-                      icon={metric.icon}
-                      iconColor={metric.iconColor}
-                      bgColor={metric.bgColor}
-                      strongIconColor={metric.strongIconColor}
-                      ctaText={metric.ctaText}
-                      onCtaClick={() => console.log(`Navigate to ${metric.title}`)}
-                    />
-                  </div>
-                ))}
-              </section>
+          {/* Metrics Cards - Full width section */}
+          <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {metricsData.map((metric, index) => (
+              <div key={metric.title} className="animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
+                <MetricCard
+                  title={metric.title}
+                  value={metric.value}
+                  change={metric.change}
+                  icon={metric.icon}
+                  iconColor={metric.iconColor}
+                  bgColor={metric.bgColor}
+                  strongIconColor={metric.strongIconColor}
+                  ctaText={metric.ctaText}
+                  onCtaClick={() => console.log(`Navigate to ${metric.title}`)}
+                />
+              </div>
+            ))}
+          </section>
 
-              {/* Main Map Section */}
-              <section className="animate-fade-in" style={{ animationDelay: '200ms' }}>
-                <InteractiveMap />
-              </section>
+          {/* Map and Agenda section side by side */}
+          <section className="grid grid-cols-1 xl:grid-cols-4 gap-4 sm:gap-6 animate-fade-in" style={{ animationDelay: '200ms' }}>
+            {/* Map - Takes 3 columns (75% width) */}
+            <div className="xl:col-span-3">
+              <InteractiveMap />
             </div>
 
-            {/* Right Sidebar with Agenda */}
-            <div className="w-80 flex-shrink-0">
+            {/* Right Sidebar with Agenda - Takes 1 column (25% width) */}
+            <div className="space-y-4">
               <AgendaWidget />
             </div>
-          </div>
+          </section>
         </div>
       </main>
 
