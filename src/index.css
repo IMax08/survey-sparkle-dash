@@ -27,11 +27,11 @@
     --danger: 0 84% 60%;              /* Red #EF4444 */
     --info: 219 89% 56%;              /* Survey Blue */
     
-    /* Metric Card Colors - Baseado no wireframe visual */
-    --metric-green: 125 65% 50%;      /* Verde do card "Relatórios Gerados" */
-    --metric-orange: 35 85% 60%;      /* Laranja do card "Inspeções em Aberto" */
-    --metric-yellow: 45 90% 65%;      /* Amarelo do card "Notas em Aberto" */
-    --metric-red: 355 70% 45%;        /* Vermelho escuro do card "Inspeções Executadas" */
+    /* Metric Card Colors - Cores exatas especificadas */
+    --metric-green: 200 100% 8%;      /* #00192a - Azul escuro para Relatórios Gerados */
+    --metric-orange: 42 94% 75%;      /* #fbd280 - Amarelo claro para Inspeções em Aberto */
+    --metric-yellow: 42 94% 75%;      /* #fbd280 - Amarelo claro para Notas em Aberto */
+    --metric-red: 0 100% 93%;         /* #ffdcdc - Rosa claro para Inspeções Executadas */
     
     /* Neutral Grays */
     --muted: 220 14% 96%;             /* Light Muted */
