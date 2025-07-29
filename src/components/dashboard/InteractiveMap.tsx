@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { MapPin, Filter, Maximize2, X, Calendar, Clock, User, Settings } from "lucide-react";
+import GoogleMapsWrapper from "./GoogleMapsWrapper";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -54,73 +55,15 @@ const InteractiveMap = () => {
   ];
 
   const MapComponent = () => (
-    <div className="relative w-full h-full rounded-lg overflow-hidden" 
-         style={{ 
-           backgroundImage: `linear-gradient(to bottom right, #e0f2fe, #b3e5fc)`,
-           minHeight: '500px'
-         }}>
-      {/* Simulated Google Maps background */}
-      <div className="absolute inset-0 opacity-20"
-           style={{
-             backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23999' opacity='0.1'%3E%3Cpath d='M0 0h100v100H0z'/%3E%3Cpath d='M20 20h60v60H20z' fill='none' stroke='%23666' stroke-width='1'/%3E%3C/g%3E%3C/svg%3E")`
-           }}>
-      </div>
+    <div className="relative w-full h-full rounded-lg overflow-hidden">
+      <GoogleMapsWrapper 
+        pins={mapPins}
+        onPinClick={setSelectedPin}
+        className="w-full h-full min-h-[500px] rounded-lg"
+      />
       
-      {/* Location text labels */}
-      <div className="absolute top-4 left-4 text-sm font-medium text-gray-700">NAVEGANTES</div>
-      <div className="absolute top-20 right-20 text-sm font-medium text-gray-700">RUBEM BERTA</div>
-      <div className="absolute bottom-20 left-20 text-sm font-medium text-gray-700">CENTRO HISTÓRICO</div>
-      <div className="absolute bottom-20 right-20 text-sm font-medium text-gray-700">TRÊS FIG</div>
-      <div className="absolute top-1/2 left-1/3 text-sm font-medium text-gray-700">SÃO GERALDO</div>
-      <div className="absolute top-1/2 right-1/4 text-sm font-medium text-gray-700">JARDIM ITU</div>
-      
-      {/* Map pins distributed across the map */}
-      {mapPins.map((pin, index) => {
-        const pinColor = pin.status === 'pending' ? '#F59E0B' : 
-                        pin.status === 'completed' ? '#10B981' : '#EF4444';
-        
-        // Distribute pins more naturally across the map
-        const positions = [
-          { left: '15%', top: '25%' }, { left: '25%', top: '35%' }, { left: '35%', top: '25%' },
-          { left: '45%', top: '40%' }, { left: '55%', top: '30%' }, { left: '65%', top: '45%' },
-          { left: '75%', top: '35%' }, { left: '20%', top: '55%' }, { left: '30%', top: '65%' },
-          { left: '40%', top: '70%' }, { left: '50%', top: '60%' }, { left: '60%', top: '75%' },
-          { left: '70%', top: '65%' }, { left: '80%', top: '55%' }, { left: '85%', top: '70%' },
-          { left: '25%', top: '80%' }, { left: '45%', top: '85%' }, { left: '65%', top: '90%' },
-          { left: '75%', top: '80%' }, { left: '90%', top: '60%' }, { left: '10%', top: '70%' }
-        ];
-        
-        const position = positions[index] || { left: '50%', top: '50%' };
-        
-        return (
-          <button
-            key={pin.id}
-            onClick={() => setSelectedPin(pin)}
-            className="absolute w-4 h-4 rounded-full border-2 border-white shadow-lg 
-                      hover:scale-125 transition-all duration-200 z-10 cursor-pointer"
-            style={{
-              backgroundColor: pinColor,
-              left: position.left,
-              top: position.top,
-              boxShadow: '0 2px 8px rgba(0,0,0,0.3)'
-            }}
-            title={pin.title}
-          />
-        );
-      })}
-
-      {/* Map controls */}
-      <div className="absolute top-4 left-4 bg-white rounded-lg p-2 shadow-lg">
-        <button className="w-8 h-8 bg-gray-100 rounded flex items-center justify-center mb-1">
-          <Settings className="w-4 h-4 text-gray-600" />
-        </button>
-        <button className="w-8 h-8 bg-gray-100 rounded flex items-center justify-center">
-          <Maximize2 className="w-4 h-4 text-gray-600" />
-        </button>
-      </div>
-
-      {/* Status Legend - exactly as in image */}
-      <div className="absolute bottom-4 left-4 bg-white rounded-lg p-4 shadow-lg border">
+      {/* Status Legend - overlay on Google Maps */}
+      <div className="absolute bottom-4 left-4 bg-white rounded-lg p-4 shadow-lg border z-10">
         <h4 className="font-semibold text-gray-800 mb-3 text-sm">Status Inspeções</h4>
         <div className="space-y-2">
           <div className="flex items-center space-x-2">
@@ -140,34 +83,6 @@ const InteractiveMap = () => {
           Ver +
         </button>
       </div>
-
-      {/* Selected Pin Tooltip */}
-      {selectedPin && (
-        <div className="absolute bg-white rounded-lg p-3 shadow-lg border max-w-xs z-20"
-             style={{
-               left: '45%',
-               top: '30%',
-               transform: 'translate(-50%, -100%)'
-             }}>
-          <div className="flex items-start justify-between mb-2">
-            <h4 className="font-semibold text-gray-800 text-sm">{selectedPin.title}</h4>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setSelectedPin(null)}
-              className="w-4 h-4 text-gray-400 hover:text-gray-600 ml-2"
-            >
-              <X className="w-3 h-3" />
-            </Button>
-          </div>
-          <p className="text-xs text-gray-600 mb-1">{selectedPin.client}</p>
-          <p className="text-xs text-gray-500">{selectedPin.address}</p>
-          {/* Arrow pointing down */}
-          <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-1">
-            <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
-          </div>
-        </div>
-      )}
     </div>
   );
 
