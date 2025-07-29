@@ -30,7 +30,7 @@ const GoogleMapComponent: React.FC<GoogleMapProps> = ({ pins, onPinClick, classN
   useEffect(() => {
     if (ref.current && !map) {
       const newMap = new google.maps.Map(ref.current, {
-        center: { lat: -22.9068, lng: -43.1729 }, // Rio de Janeiro, RJ
+        center: { lat: -30.0346, lng: -51.2177 }, // Porto Alegre, RS
         zoom: 11,
         mapTypeId: 'roadmap',
         styles: [
@@ -51,8 +51,8 @@ const GoogleMapComponent: React.FC<GoogleMapProps> = ({ pins, onPinClick, classN
       const markers: google.maps.Marker[] = [];
 
       pins.forEach((pin) => {
-        const pinColor = pin.status === 'pending' ? '#F59E0B' : 
-                        pin.status === 'completed' ? '#10B981' : '#EF4444';
+        const pinColor = pin.status === 'pending' ? '#FFE8AC' : 
+                         pin.status === 'completed' ? '#B8E2C8' : '#F4C7C7';
 
         const marker = new google.maps.Marker({
           position: { lat: pin.lat, lng: pin.lng },

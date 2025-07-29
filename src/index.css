@@ -27,11 +27,11 @@
     --danger: 0 84% 60%;              /* Red #EF4444 */
     --info: 219 89% 56%;              /* Survey Blue */
     
-    /* Metric Card Colors - From images */
-    --metric-green: 142 71% 45%;      /* Relatórios Gerados - Green */
-    --metric-orange: 38 92% 50%;      /* Inspeções em Aberto - Orange */
-    --metric-yellow: 45 93% 47%;      /* Notas em Aberto - Yellow */
-    --metric-red: 0 84% 60%;          /* Inspeções Executadas - Red */
+    /* Metric Card Colors - Tons pastéis suaves */
+    --metric-green: 140 57% 70%;      /* Verde pastel #B8E2C8 */
+    --metric-orange: 36 100% 85%;     /* Laranja pastel #FFE8AC */
+    --metric-yellow: 48 100% 85%;     /* Amarelo pastel #FEF08A */
+    --metric-red: 0 44% 85%;          /* Vermelho pastel #F4C7C7 */
     
     /* Neutral Grays */
     --muted: 220 14% 96%;             /* Light Muted */

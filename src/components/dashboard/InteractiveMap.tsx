@@ -25,33 +25,68 @@ const InteractiveMap = () => {
 
   console.log('[Dashboard] InteractiveMap rendered', { selectedPin });
 
-  // Mock map pins data - Rio de Janeiro locations
+  // Supermercados Zaffari reais em Porto Alegre
   const mapPins: MapPin[] = [
     {
       id: '1',
-      lat: -22.9068,
-      lng: -43.1729,
-      title: 'Brava',
+      lat: -30.0277,
+      lng: -51.2287,
+      title: 'Zaffari Menino Deus',
       type: 'inspection',
       status: 'pending',
-      client: 'Subsolo | Estimar | 12',
+      client: 'Zaffari Menino Deus',
       date: '2025-01-04',
       time: '09:00',
-      address: 'Planajado 04/01/2025 - Aceito: Nome Usuário'
+      address: 'Rua Múcio Teixeira, 680 - Menino Deus'
     },
-    // More pins distributed across Rio de Janeiro
-    ...Array.from({ length: 20 }, (_, i) => ({
-      id: `pin-${i + 2}`,
-      lat: -22.9068 + (Math.random() - 0.5) * 0.1,
-      lng: -43.1729 + (Math.random() - 0.5) * 0.1,
-      title: `Local ${i + 2}`,
-      type: 'inspection' as const,
-      status: ['pending', 'completed', 'cancelled'][Math.floor(Math.random() * 3)] as 'pending' | 'completed' | 'cancelled',
-      client: `Cliente ${i + 2}`,
-      date: '2025-01-15',
-      time: '10:00',
-      address: `Endereço ${i + 2}`
-    }))
+    {
+      id: '2',
+      lat: -30.1086,
+      lng: -51.1978,
+      title: 'Zaffari Cavalhada',
+      type: 'inspection',
+      status: 'completed',
+      client: 'Zaffari Cavalhada',
+      date: '2025-01-03',
+      time: '14:00',
+      address: 'Av. da Cavalhada, 3621 - Cavalhada'
+    },
+    {
+      id: '3',
+      lat: -30.0194,
+      lng: -51.1982,
+      title: 'Zaffari Higienópolis',
+      type: 'inspection',
+      status: 'cancelled',
+      client: 'Zaffari Higienópolis',
+      date: '2025-01-02',
+      time: '10:30',
+      address: 'Av. Plínio Brasil Milano, 1000 - Higienópolis'
+    },
+    {
+      id: '4',
+      lat: -30.0135,
+      lng: -51.2065,
+      title: 'Zaffari Lucas de Oliveira',
+      type: 'inspection',
+      status: 'pending',
+      client: 'Zaffari Lucas de Oliveira',
+      date: '2025-01-05',
+      time: '08:30',
+      address: 'Av. Coronel Lucas de Oliveira, 740 - Bela Vista'
+    },
+    {
+      id: '5',
+      lat: -29.9977,
+      lng: -51.1754,
+      title: 'Zaffari Centro',
+      type: 'inspection',
+      status: 'completed',
+      client: 'Zaffari Centro',
+      date: '2025-01-01',
+      time: '16:00',
+      address: 'Rua dos Andradas, 1001 - Centro Histórico'
+    }
   ];
 
   const MapComponent = () => (
@@ -65,20 +100,20 @@ const InteractiveMap = () => {
       {/* Status Legend - overlay on Google Maps */}
       <div className="absolute bottom-4 left-4 bg-white rounded-lg p-4 shadow-lg border z-10">
         <h4 className="font-semibold text-gray-800 mb-3 text-sm">Status Inspeções</h4>
-        <div className="space-y-2">
-          <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 rounded-full bg-yellow-500"></div>
-            <span className="text-xs text-gray-600">Em Aberto</span>
+          <div className="space-y-2">
+            <div className="flex items-center space-x-2">
+              <div className="w-4 h-4 rounded-full" style={{ backgroundColor: '#FFE8AC' }}></div>
+              <span className="text-xs text-gray-600">Em Aberto</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-4 h-4 rounded-full" style={{ backgroundColor: '#B8E2C8' }}></div>
+              <span className="text-xs text-gray-600">Executadas</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-4 h-4 rounded-full" style={{ backgroundColor: '#F4C7C7' }}></div>
+              <span className="text-xs text-gray-600">Atrasadas</span>
+            </div>
           </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 rounded-full bg-green-500"></div>
-            <span className="text-xs text-gray-600">Executadas</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 rounded-full bg-red-500"></div>
-            <span className="text-xs text-gray-600">Atrasadas</span>
-          </div>
-        </div>
         <button className="w-full mt-3 bg-gray-800 text-white text-xs py-2 px-4 rounded hover:bg-gray-700 transition-colors">
           Ver +
         </button>
@@ -98,8 +133,8 @@ const InteractiveMap = () => {
               <Dialog>
                 <DialogTrigger asChild>
                   <Button variant="outline" size="sm" className="flex items-center space-x-2 text-gray-600 border-gray-300 flex-1 sm:flex-initial justify-center">
-                    <Filter className="w-4 h-4" />
-                    <span className="hidden sm:inline">Filtros</span>
+                    <Settings className="w-4 h-4" />
+                    <span className="hidden sm:inline">Configurações</span>
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="max-w-md">
@@ -111,11 +146,11 @@ const InteractiveMap = () => {
                       <label className="text-sm font-medium text-gray-800 mb-2 block">
                         Filtro por cliente
                       </label>
-                      <div className="flex items-center space-x-2 text-sm text-green-600">
-                        <span className="w-4 h-4 bg-green-500 rounded-full flex items-center justify-center">
+                      <div className="flex items-center space-x-2 text-sm">
+                        <span className="w-4 h-4 rounded-full flex items-center justify-center" style={{ backgroundColor: '#B8E2C8' }}>
                           <span className="text-white text-xs">✓</span>
                         </span>
-                        <span>Brava</span>
+                        <span>Zaffari</span>
                       </div>
                     </div>
                     
@@ -125,16 +160,16 @@ const InteractiveMap = () => {
                       </label>
                       <div className="space-y-2">
                         <label className="flex items-center space-x-2">
-                          <input type="checkbox" checked className="w-4 h-4 text-green-500" />
+                          <input type="checkbox" defaultChecked className="w-4 h-4" style={{ accentColor: '#FFE8AC' }} />
                           <span className="text-sm">Em Aberto</span>
                         </label>
                         <label className="flex items-center space-x-2">
-                          <input type="checkbox" className="w-4 h-4" />
-                          <span className="text-sm">Executados</span>
+                          <input type="checkbox" className="w-4 h-4" style={{ accentColor: '#B8E2C8' }} />
+                          <span className="text-sm">Executadas</span>
                         </label>
                         <label className="flex items-center space-x-2">
-                          <input type="checkbox" className="w-4 h-4" />
-                          <span className="text-sm">Atrasados</span>
+                          <input type="checkbox" className="w-4 h-4" style={{ accentColor: '#F4C7C7' }} />
+                          <span className="text-sm">Atrasadas</span>
                         </label>
                       </div>
                     </div>
@@ -145,7 +180,7 @@ const InteractiveMap = () => {
                       </label>
                       <div className="space-y-2">
                         <label className="flex items-center space-x-2">
-                          <input type="checkbox" checked className="w-4 h-4 text-green-500" />
+                          <input type="checkbox" defaultChecked className="w-4 h-4" style={{ accentColor: '#B8E2C8' }} />
                           <span className="text-sm">Mostrar Inspeções</span>
                         </label>
                         <label className="flex items-center space-x-2">
@@ -156,31 +191,12 @@ const InteractiveMap = () => {
                     </div>
 
                     <div className="flex flex-col space-y-2 pt-4">
-                      <Button className="w-full bg-gray-800 hover:bg-gray-700 text-white">
+                      <Button className="w-full" style={{ backgroundColor: '#A8D5EB', color: '#0F172A' }}>
                         Aplicar Filtros
                       </Button>
                       <Button variant="outline" className="w-full">
                         Cancelar
                       </Button>
-                    </div>
-                  </div>
-                </DialogContent>
-              </Dialog>
-
-              <Dialog open={isFullscreen} onOpenChange={setIsFullscreen}>
-                <DialogTrigger asChild>
-                  <Button variant="outline" size="sm" className="flex items-center space-x-2 flex-1 sm:flex-initial justify-center">
-                    <Maximize2 className="w-4 h-4" />
-                    <span className="hidden sm:inline">Expandir</span>
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="max-w-7xl w-full h-[90vh] p-0">
-                  <DialogHeader className="p-6 pb-0">
-                    <DialogTitle>Mapa Completo - Inspeções e Notas</DialogTitle>
-                  </DialogHeader>
-                  <div className="flex-1 p-6 pt-0">
-                    <div className="h-full">
-                      <MapComponent />
                     </div>
                   </div>
                 </DialogContent>
