@@ -88,12 +88,6 @@ const MonthlyCalendar = () => {
     }
   };
 
-  const quickActions = [
-    { label: 'Hoje', action: () => setCurrentDate(new Date()) },
-    { label: 'Próximas Inspeções', action: () => console.log('Navigate to inspections') },
-    { label: 'Relatórios Pendentes', action: () => console.log('Navigate to reports') }
-  ];
-
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       {/* Calendar - 64% */}
@@ -185,60 +179,74 @@ const MonthlyCalendar = () => {
         </Card>
       </div>
 
-      {/* Sidebar - 36% */}
-      <div className="space-y-6">
-        {/* Quick Actions */}
-        <Card className="p-4 bg-gradient-card border-border">
-          <h4 className="font-semibold text-foreground mb-4">Ações Rápidas</h4>
-          <div className="space-y-2">
-            {quickActions.map((action, index) => (
-              <Button
+      {/* Sidebar - 36% - Matching images exactly */}
+      <div className="space-y-4">
+        {/* Calendar Widget - matching the image exactly */}
+        <Card className="p-4 bg-white border border-gray-200">
+          <div className="flex items-center justify-between mb-4">
+            <h4 className="font-semibold text-gray-800 text-sm">Agenda</h4>
+            <Button variant="ghost" size="sm" className="text-xs text-gray-600">
+              Ver +
+            </Button>
+          </div>
+          
+          {/* Month/Year header */}
+          <div className="text-center mb-3">
+            <span className="text-sm font-medium text-gray-800">Outubro</span>
+          </div>
+          
+          {/* Day headers */}
+          <div className="grid grid-cols-7 gap-1 mb-2">
+            {['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'].map(day => (
+              <div key={day} className="text-center text-xs text-gray-500 py-1">
+                {day}
+              </div>
+            ))}
+          </div>
+          
+          {/* Calendar days - showing current week */}
+          <div className="grid grid-cols-7 gap-1">
+            {[28, 29, 30, 31, 1, 2, 3].map((day, index) => (
+              <div 
                 key={index}
-                variant="ghost"
-                size="sm"
-                onClick={action.action}
-                className="w-full justify-start text-left hover:bg-muted"
+                className={`
+                  text-center text-xs p-2 cursor-pointer rounded
+                  ${day <= 3 && index >= 4 ? 'text-gray-800 hover:bg-gray-100' : 'text-gray-400'}
+                  ${day === 31 ? 'bg-blue-500 text-white' : ''}
+                `}
               >
-                {action.label}
-              </Button>
+                {day}
+              </div>
+            ))}
+            {[4, 5, 6, 7, 8, 9, 10].map((day, index) => (
+              <div 
+                key={index + 7}
+                className="text-center text-xs p-2 cursor-pointer rounded text-gray-800 hover:bg-gray-100"
+              >
+                {day}
+              </div>
             ))}
           </div>
         </Card>
 
-        {/* Today's Events */}
-        <Card className="p-4 bg-gradient-card border-border">
-          <h4 className="font-semibold text-foreground mb-4 flex items-center">
-            <Calendar className="w-4 h-4 mr-2" />
-            Hoje
-          </h4>
-          <div className="space-y-3">
-            <div className="p-3 bg-primary/5 rounded-lg border border-primary/20">
-              <div className="flex items-start space-x-3">
-                <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
-                <div className="flex-1">
-                  <p className="text-sm font-medium text-foreground">Inspeção Prédio Central</p>
-                  <div className="flex items-center text-xs text-muted-foreground mt-1">
-                    <Clock className="w-3 h-3 mr-1" />
-                    09:00
-                    <MapPin className="w-3 h-3 ml-2 mr-1" />
-                    São Paulo - SP
-                  </div>
-                </div>
-              </div>
+        {/* Action Cards */}
+        <Card className="p-4 bg-white border border-gray-200">
+          <div className="flex items-center space-x-3 p-3 hover:bg-gray-50 rounded cursor-pointer">
+            <div className="w-8 h-8 bg-gray-100 rounded flex items-center justify-center">
+              <span className="text-lg">📊</span>
             </div>
-            
-            <div className="p-3 bg-status-warning/5 rounded-lg border border-status-warning/20">
-              <div className="flex items-start space-x-3">
-                <div className="w-2 h-2 bg-status-warning rounded-full mt-2"></div>
-                <div className="flex-1">
-                  <p className="text-sm font-medium text-foreground">Reunião Cliente</p>
-                  <div className="flex items-center text-xs text-muted-foreground mt-1">
-                    <Clock className="w-3 h-3 mr-1" />
-                    14:00
-                  </div>
-                </div>
-              </div>
+            <span className="text-sm font-medium text-gray-800">Gerar Relatórios</span>
+            <span className="ml-auto text-gray-400">→</span>
+          </div>
+        </Card>
+
+        <Card className="p-4 bg-white border border-gray-200">
+          <div className="flex items-center space-x-3 p-3 hover:bg-gray-50 rounded cursor-pointer">
+            <div className="w-8 h-8 bg-gray-100 rounded flex items-center justify-center">
+              <span className="text-lg">📝</span>
             </div>
+            <span className="text-sm font-medium text-gray-800">Novo Formulário</span>
+            <span className="ml-auto text-gray-400">→</span>
           </div>
         </Card>
       </div>
