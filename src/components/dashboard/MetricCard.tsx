@@ -13,6 +13,7 @@ interface MetricCardProps {
   icon: LucideIcon;
   iconColor?: string;
   bgColor?: string;
+  strongIconColor?: string; // Nova prop para cor forte do ícone
   ctaText?: string;
   onCtaClick?: () => void;
 }
@@ -24,6 +25,7 @@ const MetricCard = ({
   icon: Icon,
   iconColor = "text-white",
   bgColor = "bg-primary",
+  strongIconColor = "#ffffff", // Cor forte padrão
   ctaText = "Ver +",
   onCtaClick
 }: MetricCardProps) => {
@@ -41,7 +43,7 @@ const MetricCard = ({
       <div className={`${bgColor} p-3 sm:p-4 flex items-center justify-between`}>
         <div className="flex items-center space-x-2 sm:space-x-3">
           <div className="w-6 h-6 sm:w-8 sm:h-8 bg-white/20 rounded-full flex items-center justify-center">
-            <Icon className="w-3 h-3 sm:w-5 sm:h-5 text-white" />
+            <Icon className="w-3 h-3 sm:w-5 sm:h-5" style={{ color: strongIconColor }} />
           </div>
           <h3 className="text-xs sm:text-sm font-medium text-white leading-tight">
             {title}

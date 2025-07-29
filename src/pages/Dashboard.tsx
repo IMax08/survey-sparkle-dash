@@ -21,6 +21,7 @@ const Dashboard = () => {
       icon: FileText,
       iconColor: "text-white",
       bgColor: "bg-metric-green",
+      strongIconColor: "#00192a", // Azul escuro forte
       ctaText: "Ver +"
     },
     {
@@ -30,6 +31,7 @@ const Dashboard = () => {
       icon: FileText,
       iconColor: "text-white",
       bgColor: "bg-metric-orange",
+      strongIconColor: "#f59e0b", // Laranja forte
       ctaText: "Ver +"
     },
     {
@@ -39,6 +41,7 @@ const Dashboard = () => {
       icon: FileText,
       iconColor: "text-white", 
       bgColor: "bg-metric-yellow",
+      strongIconColor: "#f59e0b", // Laranja forte
       ctaText: "Ver +"
     },
     {
@@ -48,6 +51,7 @@ const Dashboard = () => {
       icon: FileText,
       iconColor: "text-white",
       bgColor: "bg-metric-red", 
+      strongIconColor: "#ef4444", // Vermelho forte
       ctaText: "Ver +"
     }
   ];
@@ -82,6 +86,7 @@ const Dashboard = () => {
                   icon={metric.icon}
                   iconColor={metric.iconColor}
                   bgColor={metric.bgColor}
+                  strongIconColor={metric.strongIconColor}
                   ctaText={metric.ctaText}
                   onCtaClick={() => console.log(`Navigate to ${metric.title}`)}
                 />
