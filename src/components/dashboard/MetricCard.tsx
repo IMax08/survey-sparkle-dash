@@ -12,6 +12,7 @@ interface MetricCardProps {
   };
   icon: LucideIcon;
   iconColor?: string;
+  bgColor?: string;
   ctaText?: string;
   onCtaClick?: () => void;
 }
@@ -21,7 +22,8 @@ const MetricCard = ({
   value,
   change,
   icon: Icon,
-  iconColor = "text-primary",
+  iconColor = "text-white",
+  bgColor = "bg-primary",
   ctaText = "Ver +",
   onCtaClick
 }: MetricCardProps) => {
@@ -31,34 +33,40 @@ const MetricCard = ({
   const ChangeIcon = change?.type === 'increase' ? ArrowUpRight : ArrowDownRight;
 
   return (
-    <Card className="p-6 bg-gradient-card hover:bg-card-hover transition-all duration-200 
-                     border-border hover:shadow-lg group cursor-pointer animate-fade-in">
+    <Card className={`p-6 ${bgColor} text-white hover:opacity-90 transition-all duration-200 
+                     border-0 group cursor-pointer animate-fade-in relative overflow-hidden`}>
       <div className="flex items-start justify-between">
         <div className="flex-1">
-          <div className="flex items-center justify-between mb-4">
-            <Icon className={`w-6 h-6 ${iconColor}`} />
+          {/* Header with icon and change indicator */}
+          <div className="flex items-start justify-between mb-4">
+            <div className={`w-8 h-8 ${bgColor} bg-white/20 rounded-lg flex items-center justify-center`}>
+              <Icon className={`w-5 h-5 ${iconColor}`} />
+            </div>
             {change && (
-              <div className={`flex items-center space-x-1 ${changeColor}`}>
-                <ChangeIcon className="w-4 h-4" />
+              <div className="flex items-center space-x-1 text-white/90">
+                <TrendingUp className="w-4 h-4" />
                 <span className="text-sm font-medium">
-                  {Math.abs(change.value)}%
+                  {change.type === 'increase' ? '+' : ''}{change.value}%
                 </span>
               </div>
             )}
           </div>
 
-          <h3 className="text-sm font-medium text-muted-foreground mb-2">
+          {/* Title */}
+          <h3 className="text-sm font-medium text-white/80 mb-2 leading-tight">
             {title}
           </h3>
 
-          <div className="flex items-end justify-between">
-            <p className="text-3xl font-bold text-foreground mb-2">
+          {/* Value */}
+          <div className="flex items-end justify-between mb-2">
+            <p className="text-4xl font-bold text-white">
               {value}
             </p>
           </div>
 
+          {/* Change description */}
           {change && (
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-white/70">
               {change.type === 'increase' ? '+' : ''}{change.value}% vs {change.period}
             </p>
           )}
@@ -66,13 +74,13 @@ const MetricCard = ({
       </div>
 
       {/* CTA Button */}
-      <div className="mt-4 pt-4 border-t border-border">
+      <div className="mt-4 pt-4 border-t border-white/20">
         <Button
           variant="ghost"
           size="sm"
           onClick={onCtaClick}
-          className="w-full justify-between text-primary hover:text-primary-hover 
-                     hover:bg-primary/5 transition-all duration-200 group"
+          className="w-full justify-between text-white hover:text-white 
+                     hover:bg-white/10 transition-all duration-200 group border-0"
         >
           <span className="text-sm font-medium">{ctaText}</span>
           <TrendingUp className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />

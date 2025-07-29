@@ -51,6 +51,12 @@ export default {
 					danger: 'hsl(var(--danger))',
 					info: 'hsl(var(--info))'
 				},
+				metric: {
+					green: 'hsl(var(--metric-green))',
+					orange: 'hsl(var(--metric-orange))',
+					yellow: 'hsl(var(--metric-yellow))',
+					red: 'hsl(var(--metric-red))'
+				},
 				sidebar: {
 					bg: 'hsl(var(--sidebar-bg))',
 					hover: 'hsl(var(--sidebar-hover))',

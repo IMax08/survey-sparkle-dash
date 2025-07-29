@@ -7,12 +7,12 @@
 @layer base {
   :root {
     /* Core Survey 4.0 Brand Colors */
-    --primary: 214 84% 56%;           /* Survey Blue #4A90E2 */
-    --primary-hover: 214 84% 46%;     /* Darker Survey Blue */
+    --primary: 219 89% 56%;           /* Survey Blue #4A90E2 */
+    --primary-hover: 219 89% 46%;     /* Darker Survey Blue */
     --primary-foreground: 0 0% 100%;  /* White */
     
     /* Background System */
-    --background: 220 20% 97%;        /* Light Gray Background #F8F9FA */
+    --background: 0 0% 100%;          /* Pure White Background */
     --background-secondary: 220 15% 94%; /* Secondary Background */
     --foreground: 220 26% 14%;        /* Dark Text #1E293B */
     
@@ -21,11 +21,17 @@
     --card-hover: 220 20% 98%;        /* Subtle Hover */
     --card-foreground: 220 26% 14%;   /* Card Text */
     
-    /* Status Colors */
+    /* Status Colors - Exactly matching images */
     --success: 142 71% 45%;           /* Green #22C55E */
     --warning: 38 92% 50%;            /* Orange #F59E0B */
     --danger: 0 84% 60%;              /* Red #EF4444 */
-    --info: 214 84% 56%;              /* Survey Blue */
+    --info: 219 89% 56%;              /* Survey Blue */
+    
+    /* Metric Card Colors - From images */
+    --metric-green: 142 71% 45%;      /* Relatórios Gerados - Green */
+    --metric-orange: 38 92% 50%;      /* Inspeções em Aberto - Orange */
+    --metric-yellow: 45 93% 47%;      /* Notas em Aberto - Yellow */
+    --metric-red: 0 84% 60%;          /* Inspeções Executadas - Red */
     
     /* Neutral Grays */
     --muted: 220 14% 96%;             /* Light Muted */
@@ -34,16 +40,16 @@
     --input: 220 13% 91%;             /* Input Border */
     
     /* Interactive Elements */
-    --accent: 214 84% 56%;            /* Survey Blue Accent */
+    --accent: 219 89% 56%;            /* Survey Blue Accent */
     --accent-foreground: 0 0% 100%;   /* White Text on Accent */
-    --ring: 214 84% 56%;              /* Focus Ring */
+    --ring: 219 89% 56%;              /* Focus Ring */
     
-    /* Sidebar Colors */
-    --sidebar-bg: 220 24% 15%;        /* Dark Sidebar #1F2937 */
-    --sidebar-hover: 220 20% 20%;     /* Sidebar Hover */
+    /* Sidebar Colors - Dark blue from images */
+    --sidebar-bg: 219 28% 16%;        /* Dark Blue Sidebar */
+    --sidebar-hover: 219 25% 20%;     /* Sidebar Hover */
     --sidebar-text: 220 15% 85%;      /* Sidebar Text */
     --sidebar-text-hover: 0 0% 100%;  /* Sidebar Text Hover */
-    --sidebar-accent: 214 84% 56%;    /* Sidebar Accent */
+    --sidebar-accent: 219 89% 56%;    /* Sidebar Accent */
     
     /* Glassmorphism Effects */
     --glass-bg: 0 0% 100% / 0.8;      /* Glass Background */
@@ -56,7 +62,7 @@
     --shadow-premium: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(214 84% 56%), hsl(214 84% 46%));
+    --gradient-primary: linear-gradient(135deg, hsl(219 89% 56%), hsl(219 89% 46%));
     --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(220 20% 98%));
     --gradient-glass: linear-gradient(145deg, hsl(0 0% 100% / 0.9), hsl(220 20% 98% / 0.8));
     
@@ -69,7 +75,6 @@
     --radius: 0.5rem;
     --radius-lg: 1rem;
     --radius-xl: 1.5rem;
-
   }
 
   .dark {

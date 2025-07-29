@@ -14,39 +14,43 @@ const Dashboard = () => {
 
   console.log('[Dashboard] Main dashboard rendered', { sidebarCollapsed });
 
-  // Mock metrics data
+  // Mock metrics data - Exactly matching images
   const metricsData = [
     {
-      title: "Inspeções em Aberto",
-      value: 23,
-      change: { value: 12, type: 'increase' as const, period: 'mês anterior' },
-      icon: FileText,
-      iconColor: "text-primary",
-      ctaText: "Ver todas"
-    },
-    {
-      title: "Notas em Aberto", 
-      value: 8,
-      change: { value: 5, type: 'decrease' as const, period: 'mês anterior' },
-      icon: BarChart3,
-      iconColor: "text-status-warning",
-      ctaText: "Ver notas"
-    },
-    {
       title: "Relatórios Gerados",
-      value: 156,
-      change: { value: 18, type: 'increase' as const, period: 'mês anterior' },
+      value: 125,
+      change: { value: 21.2, type: 'increase' as const, period: 'Mês passado' },
       icon: TrendingUp,
-      iconColor: "text-status-success",
-      ctaText: "Ver relatórios"
+      iconColor: "text-white",
+      bgColor: "bg-metric-green",
+      ctaText: "Ver +"
+    },
+    {
+      title: "Inspeções em Aberto", 
+      value: 25,
+      change: { value: 10.2, type: 'decrease' as const, period: 'Mês passado' },
+      icon: FileText,
+      iconColor: "text-white",
+      bgColor: "bg-metric-orange",
+      ctaText: "Ver +"
+    },
+    {
+      title: "Notas em Aberto",
+      value: 35,
+      change: { value: 0.12, type: 'decrease' as const, period: 'Mês passado' },
+      icon: BarChart3,
+      iconColor: "text-white", 
+      bgColor: "bg-metric-yellow",
+      ctaText: "Ver +"
     },
     {
       title: "Inspeções Executadas",
-      value: 89,
-      change: { value: 8, type: 'increase' as const, period: 'mês anterior' },
+      value: 75,
+      change: { value: 0.25, type: 'decrease' as const, period: 'Mês passado' },
       icon: CheckCircle,
-      iconColor: "text-status-info",
-      ctaText: "Ver histórico"
+      iconColor: "text-white",
+      bgColor: "bg-metric-red", 
+      ctaText: "Ver +"
     }
   ];
 
@@ -80,6 +84,7 @@ const Dashboard = () => {
                   change={metric.change}
                   icon={metric.icon}
                   iconColor={metric.iconColor}
+                  bgColor={metric.bgColor}
                   ctaText={metric.ctaText}
                   onCtaClick={() => console.log(`Navigate to ${metric.title}`)}
                 />
