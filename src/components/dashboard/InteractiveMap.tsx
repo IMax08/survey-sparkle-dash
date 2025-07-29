@@ -122,233 +122,89 @@ const InteractiveMap = () => {
   );
 
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 sm:gap-6">
-      {/* Map - Takes 3 columns (75% width) - Exactly as in image */}
-      <div className="xl:col-span-3">
-        <Card className="p-4 sm:p-6 bg-white border border-gray-200 rounded-xl sm:rounded-2xl">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 space-y-3 sm:space-y-0">
-            <h3 className="text-base sm:text-lg font-semibold text-gray-800">Mapa</h3>
-            
-            <div className="flex items-center space-x-2 w-full sm:w-auto">
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button variant="outline" size="sm" className="flex items-center space-x-2 text-gray-600 border-gray-300 flex-1 sm:flex-initial justify-center">
-                    <Settings className="w-4 h-4" />
-                    <span className="hidden sm:inline">Configurações</span>
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="max-w-md">
-                  <DialogHeader>
-                    <DialogTitle>Configurações do Mapa</DialogTitle>
-                  </DialogHeader>
-                  <div className="space-y-4">
-                    <div>
-                      <label className="text-sm font-medium text-gray-800 mb-2 block">
-                        Filtro por cliente
-                      </label>
-                      <div className="flex items-center space-x-2 text-sm">
-                        <span className="w-4 h-4 rounded-full flex items-center justify-center" style={{ backgroundColor: '#B8E2C8' }}>
-                          <span className="text-white text-xs">✓</span>
-                        </span>
-                        <span>Zaffari</span>
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <label className="text-sm font-medium text-gray-800 mb-2 block">
-                        Filtro por Status
-                      </label>
-                      <div className="space-y-2">
-                        <label className="flex items-center space-x-2">
-                          <input type="checkbox" defaultChecked className="w-4 h-4" style={{ accentColor: '#FFE8AC' }} />
-                          <span className="text-sm">Em Aberto</span>
-                        </label>
-                        <label className="flex items-center space-x-2">
-                          <input type="checkbox" className="w-4 h-4" style={{ accentColor: '#B8E2C8' }} />
-                          <span className="text-sm">Executadas</span>
-                        </label>
-                        <label className="flex items-center space-x-2">
-                          <input type="checkbox" className="w-4 h-4" style={{ accentColor: '#F4C7C7' }} />
-                          <span className="text-sm">Atrasadas</span>
-                        </label>
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <label className="text-sm font-medium text-gray-800 mb-2 block">
-                        Visualização de:
-                      </label>
-                      <div className="space-y-2">
-                        <label className="flex items-center space-x-2">
-                          <input type="checkbox" defaultChecked className="w-4 h-4" style={{ accentColor: '#B8E2C8' }} />
-                          <span className="text-sm">Mostrar Inspeções</span>
-                        </label>
-                        <label className="flex items-center space-x-2">
-                          <input type="checkbox" className="w-4 h-4" />
-                          <span className="text-sm">Mostrar Notas de Manutenção</span>
-                        </label>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col space-y-2 pt-4">
-                      <Button className="w-full" style={{ backgroundColor: '#A8D5EB', color: '#0F172A' }}>
-                        Aplicar Filtros
-                      </Button>
-                      <Button variant="outline" className="w-full">
-                        Cancelar
-                      </Button>
-                    </div>
+    <Card className="p-4 sm:p-6 bg-white border border-gray-200 rounded-xl sm:rounded-2xl">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 space-y-3 sm:space-y-0">
+        <h3 className="text-base sm:text-lg font-semibold text-gray-800">Mapa</h3>
+        
+        <div className="flex items-center space-x-2 w-full sm:w-auto">
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline" size="sm" className="flex items-center space-x-2 text-gray-600 border-gray-300 flex-1 sm:flex-initial justify-center">
+                <Settings className="w-4 h-4" />
+                <span className="hidden sm:inline">Configurações</span>
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-w-md">
+              <DialogHeader>
+                <DialogTitle>Configurações do Mapa</DialogTitle>
+              </DialogHeader>
+              <div className="space-y-4">
+                <div>
+                  <label className="text-sm font-medium text-gray-800 mb-2 block">
+                    Filtro por cliente
+                  </label>
+                  <div className="flex items-center space-x-2 text-sm">
+                    <span className="w-4 h-4 rounded-full flex items-center justify-center" style={{ backgroundColor: '#B8E2C8' }}>
+                      <span className="text-white text-xs">✓</span>
+                    </span>
+                    <span>Zaffari</span>
                   </div>
-                </DialogContent>
-              </Dialog>
-            </div>
-          </div>
+                </div>
+                
+                <div>
+                  <label className="text-sm font-medium text-gray-800 mb-2 block">
+                    Filtro por Status
+                  </label>
+                  <div className="space-y-2">
+                    <label className="flex items-center space-x-2">
+                      <input type="checkbox" defaultChecked className="w-4 h-4" style={{ accentColor: '#FFE8AC' }} />
+                      <span className="text-sm">Em Aberto</span>
+                    </label>
+                    <label className="flex items-center space-x-2">
+                      <input type="checkbox" className="w-4 h-4" style={{ accentColor: '#B8E2C8' }} />
+                      <span className="text-sm">Executadas</span>
+                    </label>
+                    <label className="flex items-center space-x-2">
+                      <input type="checkbox" className="w-4 h-4" style={{ accentColor: '#F4C7C7' }} />
+                      <span className="text-sm">Atrasadas</span>
+                    </label>
+                  </div>
+                </div>
+                
+                <div>
+                  <label className="text-sm font-medium text-gray-800 mb-2 block">
+                    Visualização de:
+                  </label>
+                  <div className="space-y-2">
+                    <label className="flex items-center space-x-2">
+                      <input type="checkbox" defaultChecked className="w-4 h-4" style={{ accentColor: '#B8E2C8' }} />
+                      <span className="text-sm">Mostrar Inspeções</span>
+                    </label>
+                    <label className="flex items-center space-x-2">
+                      <input type="checkbox" className="w-4 h-4" />
+                      <span className="text-sm">Mostrar Notas de Manutenção</span>
+                    </label>
+                  </div>
+                </div>
 
-          <div className="h-[500px] sm:h-[600px] lg:h-[650px] w-full">
-            <MapComponent />
-          </div>
-        </Card>
+                <div className="flex flex-col space-y-2 pt-4">
+                  <Button className="w-full" style={{ backgroundColor: '#A8D5EB', color: '#0F172A' }}>
+                    Aplicar Filtros
+                  </Button>
+                  <Button variant="outline" className="w-full">
+                    Cancelar
+                  </Button>
+                </div>
+              </div>
+            </DialogContent>
+          </Dialog>
+        </div>
       </div>
 
-      {/* Sidebar - Takes 1 column (25% width) - Exactly as in image */}
-      <div className="space-y-4">
-        {/* Calendar Widget - Exactly as in image */}
-        <Card className="p-4 bg-white border border-gray-200 rounded-xl">
-          <div className="flex items-center justify-between mb-4">
-            <h4 className="font-semibold text-gray-800 text-sm">Agenda</h4>
-            <Button variant="ghost" size="sm" className="text-xs text-white bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded">
-              Ver +
-            </Button>
-          </div>
-          
-          {/* Month header with dark background */}
-          <div className="bg-gray-800 text-white text-center py-2 mb-3 rounded">
-            <span className="text-sm font-medium">Outubro</span>
-          </div>
-          
-          {/* Day headers */}
-          <div className="grid grid-cols-7 gap-1 mb-2">
-            {['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'].map((day, index) => (
-              <div key={day} className={`text-center text-xs py-1 ${index >= 5 ? 'text-blue-500' : 'text-gray-600'}`}>
-                {day}
-              </div>
-            ))}
-          </div>
-          
-          {/* Calendar grid */}
-          <div className="grid grid-cols-7 gap-1">
-            {/* Previous month days */}
-            {[30, 1, 2, 3, 4, 5, 6].map((day, index) => (
-              <div 
-                key={index}
-                className={`
-                  text-center text-xs p-2 cursor-pointer rounded h-8 flex items-center justify-center
-                  ${index === 0 ? 'text-gray-400' : 'text-gray-800 hover:bg-gray-100'}
-                  ${index >= 5 ? 'text-blue-500' : ''}
-                `}
-              >
-                {day}
-              </div>
-            ))}
-            
-            {/* Current month days */}
-            {[7, 8, 9, 10, 11, 12, 13].map((day, index) => (
-              <div 
-                key={index + 7}
-                className={`
-                  text-center text-xs p-2 cursor-pointer rounded h-8 flex items-center justify-center
-                  text-gray-800 hover:bg-gray-100
-                  ${index >= 5 ? 'text-blue-500' : ''}
-                `}
-              >
-                {day}
-              </div>
-            ))}
-            
-            {[14, 15, 16, 17, 18, 19, 20].map((day, index) => (
-              <div 
-                key={index + 14}
-                className={`
-                  text-center text-xs p-2 cursor-pointer rounded h-8 flex items-center justify-center
-                  text-gray-800 hover:bg-gray-100
-                  ${index >= 5 ? 'text-blue-500' : ''}
-                `}
-              >
-                {day}
-              </div>
-            ))}
-            
-            {[21, 22, 23, 24, 25, 26, 27].map((day, index) => (
-              <div 
-                key={index + 21}
-                className={`
-                  text-center text-xs p-2 cursor-pointer rounded h-8 flex items-center justify-center
-                  text-gray-800 hover:bg-gray-100
-                  ${index >= 5 ? 'text-blue-500' : ''}
-                `}
-              >
-                {day}
-              </div>
-            ))}
-            
-            {/* Week with day 28 selected */}
-            {[28, 29, 30, 31, 1, 2, 3].map((day, index) => (
-              <div 
-                key={index + 28}
-                className={`
-                  text-center text-xs p-2 cursor-pointer rounded h-8 flex items-center justify-center
-                  ${day === 28 ? 'bg-gray-800 text-white' : 
-                    day > 31 ? 'text-gray-400' : 'text-gray-800 hover:bg-gray-100'}
-                  ${index >= 5 && day <= 31 ? 'text-blue-500' : ''}
-                `}
-              >
-                {day}
-              </div>
-            ))}
-            
-            {/* Next month beginning */}
-            {[4, 5, 6, 7, 8, 9, 10].map((day, index) => (
-              <div 
-                key={index + 35}
-                className={`
-                  text-center text-xs p-2 cursor-pointer rounded h-8 flex items-center justify-center
-                  text-gray-800 hover:bg-gray-100
-                  ${index >= 5 ? 'text-blue-500' : ''}
-                `}
-              >
-                {day}
-              </div>
-            ))}
-          </div>
-        </Card>
-
-        {/* Gerar Relatórios Card - Exactly as in image */}
-        <Card className="p-4 bg-white border border-gray-200 rounded-2xl">
-          <div className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg cursor-pointer">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
-                <span className="text-lg">📊</span>
-              </div>
-              <span className="text-sm font-medium text-gray-800">Gerar Relatórios</span>
-            </div>
-            <span className="text-gray-400">→</span>
-          </div>
-        </Card>
-
-        {/* Novo Formulário Card - Exactly as in image */}
-        <Card className="p-4 bg-white border border-gray-200 rounded-2xl">
-          <div className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg cursor-pointer">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
-                <span className="text-lg">📝</span>
-              </div>
-              <span className="text-sm font-medium text-gray-800">Novo Formulário</span>
-            </div>
-            <span className="text-gray-400">→</span>
-          </div>
-        </Card>
+      <div className="h-[500px] sm:h-[600px] lg:h-[650px] w-full">
+        <MapComponent />
       </div>
-    </div>
+    </Card>
   );
 };
 
