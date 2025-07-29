@@ -173,16 +173,16 @@ const InteractiveMap = () => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-      {/* Map - Takes 3 columns (75% width) */}
+      {/* Map - Takes 3 columns (75% width) - Exactly as in image */}
       <div className="lg:col-span-3">
-        <Card className="p-6 bg-white border border-gray-200">
+        <Card className="p-6 bg-white border border-gray-200 rounded-2xl">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-lg font-semibold text-gray-800">Mapa de Inspeções</h3>
+            <h3 className="text-lg font-semibold text-gray-800">Mapa</h3>
             
             <div className="flex items-center space-x-2">
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button variant="outline" size="sm" className="flex items-center space-x-2">
+                  <Button variant="outline" size="sm" className="flex items-center space-x-2 text-gray-600 border-gray-300">
                     <Filter className="w-4 h-4" />
                     <span>Filtros</span>
                   </Button>
@@ -281,11 +281,11 @@ const InteractiveMap = () => {
 
       {/* Sidebar - Takes 1 column (25% width) - Exactly as in image */}
       <div className="space-y-4">
-        {/* Calendar Widget */}
-        <Card className="p-4 bg-white border border-gray-200">
+        {/* Calendar Widget - Exactly as in image */}
+        <Card className="p-4 bg-white border border-gray-200 rounded-2xl">
           <div className="flex items-center justify-between mb-4">
             <h4 className="font-semibold text-gray-800 text-sm">Agenda</h4>
-            <Button variant="ghost" size="sm" className="text-xs text-gray-600">
+            <Button variant="ghost" size="sm" className="text-xs text-white bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded">
               Ver +
             </Button>
           </div>
@@ -309,7 +309,7 @@ const InteractiveMap = () => {
                 className={`
                   text-center text-xs p-2 cursor-pointer rounded
                   ${day <= 3 && index >= 4 ? 'text-gray-800 hover:bg-gray-100' : 'text-gray-400'}
-                  ${day === 31 ? 'bg-blue-500 text-white' : ''}
+                  ${day === 31 ? 'bg-gray-800 text-white' : ''}
                 `}
               >
                 {day}
@@ -326,25 +326,29 @@ const InteractiveMap = () => {
           </div>
         </Card>
 
-        {/* Gerar Relatórios Card */}
-        <Card className="p-4 bg-white border border-gray-200">
-          <div className="flex items-center space-x-3 p-3 hover:bg-gray-50 rounded cursor-pointer">
-            <div className="w-8 h-8 bg-gray-100 rounded flex items-center justify-center">
-              <span className="text-lg">📊</span>
+        {/* Gerar Relatórios Card - Exactly as in image */}
+        <Card className="p-4 bg-white border border-gray-200 rounded-2xl">
+          <div className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg cursor-pointer">
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
+                <span className="text-lg">📊</span>
+              </div>
+              <span className="text-sm font-medium text-gray-800">Gerar Relatórios</span>
             </div>
-            <span className="text-sm font-medium text-gray-800">Gerar Relatórios</span>
-            <span className="ml-auto text-gray-400">→</span>
+            <span className="text-gray-400">→</span>
           </div>
         </Card>
 
-        {/* Novo Formulário Card */}
-        <Card className="p-4 bg-white border border-gray-200">
-          <div className="flex items-center space-x-3 p-3 hover:bg-gray-50 rounded cursor-pointer">
-            <div className="w-8 h-8 bg-gray-100 rounded flex items-center justify-center">
-              <span className="text-lg">📝</span>
+        {/* Novo Formulário Card - Exactly as in image */}
+        <Card className="p-4 bg-white border border-gray-200 rounded-2xl">
+          <div className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg cursor-pointer">
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
+                <span className="text-lg">📝</span>
+              </div>
+              <span className="text-sm font-medium text-gray-800">Novo Formulário</span>
             </div>
-            <span className="text-sm font-medium text-gray-800">Novo Formulário</span>
-            <span className="ml-auto text-gray-400">→</span>
+            <span className="text-gray-400">→</span>
           </div>
         </Card>
       </div>

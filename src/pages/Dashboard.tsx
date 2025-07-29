@@ -72,8 +72,8 @@ const Dashboard = () => {
         }}
       >
         <div className="p-6 space-y-6">
-          {/* Metrics Cards */}
-          <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Metrics Cards - Exactly 4 cards in a row */}
+          <section className="grid grid-cols-4 gap-6">
             {metricsData.map((metric, index) => (
               <div key={metric.title} style={{ animationDelay: `${index * 100}ms` }}>
                 <MetricCard
