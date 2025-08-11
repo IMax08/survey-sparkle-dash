@@ -14,7 +14,7 @@ import {
   ChevronRight
 } from "lucide-react";
 import surveyLogoSymbol from "@/assets/survey-logo-symbol.png";
-import surveyLogoFull from "@/assets/survey-logo-full.png";
+
 
 const DashboardSidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -59,13 +59,13 @@ const DashboardSidebar = () => {
         <div className="flex items-center space-x-3">
           <img 
             src={surveyLogoSymbol} 
-            alt="Survey 4.0" 
+            alt="Survey logo symbol" 
             className="w-7 h-7 hover:animate-heartbeat cursor-pointer transition-transform duration-200"
           />
           {!isCollapsed && (
             <img 
-              src={surveyLogoFull} 
-              alt="Survey 4.0" 
+              src="https://survey4.com.br/templates/yootheme/cache/a7/logo-survey-a7b9381a.webp" 
+              alt="Survey logo" 
               className="h-9 hover:animate-heartbeat cursor-pointer transition-transform duration-200"
               style={{ width: '141px', height: '36px' }}
             />
